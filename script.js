@@ -90,25 +90,27 @@ function calculate(input) {
 	if (signOp.includes(input)) {
 		operator = input;
 		if (!prevNum && answer) {
-			prevNum = answer;
+			prevNum = Math.floor(answer * 100000) / 100000;
 			currentNum = "";
 		} else if (!prevNum) {
 			prevNum = currentNum;
 			currentNum = "";
 		}
 		if (prevNum && currentNum) {
-			prevNum = answer;
+			prevNum = Math.floor(answer * 100000) / 100000;
 			currentNum = "";
 		}
 	}
 
 	//Display
 	display2.textContent = answer;
-	display1.textContent = `${prevNum} ${operator} ${currentNum}`;
+	display1.textContent = `${
+prevNum
+	} ${operator} ${currentNum}`;
 
 	//Evaluate result
 	if (input === "=") {
-		display1.textContent = Math.floor(answer * 1000000000) / 1000000000;
+		display1.textContent = Math.floor(answer * 100000) / 100000;
 		display2.textContent = "";
 		operator = "";
 		prevNum = "";
