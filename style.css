@@ -57,4 +57,62 @@ body{
   height: 3rem;
   font-size: 2rem;
 }
-
+.buttons{
+  display: flex;
+  flex-direction: column;
+  gap: .5rem;
+  padding: .5rem;
+  border-radius: inherit;
+  background-color: #81C3D7;
+  -webkit-border-radius: inherit;
+  -moz-border-radius: inherit;
+  -ms-border-radius: inherit;
+  -o-border-radius: inherit;
+}
+.btn--wrapper{
+  position: relative;
+  display: flex;
+  gap: .5rem;
+}
+.btn{
+  font-size: 2.5rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #fefefe;
+  background-color: #16425B;
+  height: 6.5rem;
+  width: 6.5rem;
+  border-radius: .5rem;
+  -ms-border-radius: .5rem;
+  -o-border-radius: .5rem;
+  -webkit-border-radius: .5rem;
+  -moz-border-radius: .5rem;
+}
+.btn:active{
+  background-color: #44687B;
+}
+.equals{
+  position: absolute;
+  right: 0;
+  height: 13.5rem;
+  z-index: 1;
+}
+.operator{
+  background-color: #2F6690;
+}
+.operator:active{
+  background-color: #5984A6;
+}
+.clear, .del{
+  background-color: #476A6F;
+}
+.clear:active, .del:active{
+  background-color: #6B888B;
+}
+.equals{
+  background-color: #666A86;
+}
+.equals:active{
+  background-color: #84889E;
+}
