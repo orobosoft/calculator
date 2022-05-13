@@ -35,3 +35,10 @@ theObject = {
 	"=": operate,
 };
 let signOp = Object.keys(theObject);
+
+// Event listener
+document
+	.querySelectorAll(".btn")
+	.forEach((event) =>
+		event.addEventListener("click", (e) => calculate(e.target.textContent))
+	);
