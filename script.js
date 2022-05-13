@@ -122,3 +122,43 @@ document
 	.forEach((event) =>
 		event.addEventListener("click", (e) => calculate(e.target.textContent))
 );
+document.addEventListener("keydown", (e) => {
+	keyboardInput(e.key);
+});
+
+// Keyboard support
+function keyboardInput(key) {
+	digits = [
+		"1",
+		"2",
+		"3",
+		"4",
+		"5",
+		"6",
+		"7",
+		"8",
+		"9",
+		"0",
+		".",
+		"-",
+		"+",
+		"*",
+		"/",
+		"=",
+	];
+	let input = "";
+	if (digits.includes(key)) {
+		inKey = digits.indexOf(key);
+		input = digits[inKey];
+	}
+	if (key === "Backspace") {
+		input = "C";
+	}
+	if (key === "Delete" || key === "Escape") {
+		input = "AC";
+	}
+	if (key === "Enter" || key === " ") {
+		input = "=";
+	}
+	calculate(input);
+}
