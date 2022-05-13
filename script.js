@@ -36,9 +36,89 @@ theObject = {
 };
 let signOp = Object.keys(theObject);
 
+//Calculate inputs
+function calculate(input) {
+	//toggle negative
+	if (input === "-/+") {
+		input = "";
+		negative();
+	}
+	//Clear all button
+	if (input === "AC") {
+		input = "";
+		prevNum = "";
+		currentNum = "";
+		operator = "";
+		answer = "";
+		display1.textContent = "0";
+		display2.textContent = "";
+		return;
+	}
+	//Delete button
+	if (input === "C") {
+		input = "";
+		currentNum = currentNum.slice(0, -1);
+		answer = prevNum;
+		if (answer === "" && prevNum === "" && currentNum === "") {
+			display1.textContent = "0";
+			return;
+		}
+	}
+	// Can't divide by 0 message
+	if (operator === "/" && input === "0") {
+		display2.textContent = "Can't divide by 0";
+		display2.style.color = "red";
+		display1.style.color = "red";
+		return;
+	} else {
+		display2.style.color = "black";
+		display1.style.color = "black";
+	}
+
+	//Restrict multiple decimal
+	if (input === "." && currentNum.includes(".")) {
+		input = "";
+	}
+
+	//Do the calculation
+	if (!signOp.includes(input)) {
+		currentNum += input;
+		if (prevNum && currentNum && operator) {
+			answer = operate(theObject[operator], +prevNum, +currentNum);
+		}
+	}
+	if (signOp.includes(input)) {
+		operator = input;
+		if (!prevNum && answer) {
+			prevNum = answer;
+			currentNum = "";
+		} else if (!prevNum) {
+			prevNum = currentNum;
+			currentNum = "";
+		}
+		if (prevNum && currentNum) {
+			prevNum = answer;
+			currentNum = "";
+		}
+	}
+
+	//Display
+	display2.textContent = answer;
+	display1.textContent = `${prevNum} ${operator} ${currentNum}`;
+
+	//Evaluate result
+	if (input === "=") {
+		display1.textContent = Math.floor(answer * 1000000000) / 1000000000;
+		display2.textContent = "";
+		operator = "";
+		prevNum = "";
+		currentNum = "";
+	}
+}
+
 // Event listener
 document
 	.querySelectorAll(".btn")
 	.forEach((event) =>
 		event.addEventListener("click", (e) => calculate(e.target.textContent))
-	);
+);
