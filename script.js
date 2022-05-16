@@ -108,10 +108,11 @@ function calculate(input) {
 	}
 
 	//Display
+	if (isNaN(answer)) {
+		answer = "";
+	}
 	display2.textContent = answer;
-	display1.textContent = `${
-prevNum
-	} ${operator} ${currentNum}`;
+	display1.textContent = `${prevNum} ${operator} ${currentNum}`;
 
 	//Evaluate result
 	if (input === "=") {
