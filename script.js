@@ -15,8 +15,9 @@ function operate(operator, num1, num2) {
 	return operator(num1, num2);
 }
 function negative() {
-	Math.sign(currentNum) === 1 ?
-		currentNum = -Math.abs(currentNum) : currentNum = Math.abs(currentNum);
+	Math.sign(currentNum) === 1
+		? (currentNum = -Math.abs(currentNum))
+		: (currentNum = Math.abs(currentNum));
 }
 // Variables
 let display1 = document.querySelector(".display--first");
@@ -50,6 +51,7 @@ function calculate(input) {
 		currentNum = "";
 		operator = "";
 		answer = "";
+		display1.style.color = "black";
 		display1.textContent = "0";
 		display2.textContent = "";
 		return;
@@ -65,7 +67,10 @@ function calculate(input) {
 		}
 	}
 	// Can't divide by 0 message
-	if (operator === "/" && input === "0") {
+	if (
+		(operator === "/" && currentNum === "" && input === "0") ||
+		(operator === "/" && currentNum === "." && input === "0")
+	) {
 		display2.textContent = "Can't divide by 0";
 		display2.style.color = "red";
 		display1.style.color = "red";
@@ -123,7 +128,7 @@ document
 	.querySelectorAll(".btn")
 	.forEach((event) =>
 		event.addEventListener("click", (e) => calculate(e.target.textContent))
-);
+	);
 document.addEventListener("keydown", (e) => {
 	keyboardInput(e.key);
 });
