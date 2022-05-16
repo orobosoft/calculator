@@ -91,6 +91,9 @@ function calculate(input) {
 		if (prevNum && currentNum && operator) {
 			answer = operate(theObject[operator], +prevNum, +currentNum);
 		}
+		if (answer && !prevNum) {
+			answer = ''
+		}
 	}
 	if (signOp.includes(input)) {
 		operator = input;
