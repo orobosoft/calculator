@@ -1,3 +1,3 @@
 # calculator
 
-[Preview site](https://orobosaik.github.io/calculator)
+[Preview site](https://orobosoft.github.io/calculator)
